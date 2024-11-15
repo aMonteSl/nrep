@@ -1,0 +1,29 @@
+Escribe un programa nrep.c en C para Linux que reciba dos argumentos obligatorios, el path de un fichero y un número mayor que cero. El programa creará en el directorio actual un número de ficheros igual al número que recibe como segundo parámetro.
+
+Los ficheros creados se llamarán como el fichero que recibe como primer parámetro (sólo el último elemento del path) pero acabados en '.1', '.2', etc. y contendrán un número de repeticiones del contenido del fichero igual al número con el que acaba su nombre.
+
+Si los ficheros a crear ya existían, se truncarán y sobreescribirán sin dar un error (a menos que no se pueda realizar la operación). Si el fichero original está vacío, se crearán ficheros vacíos.
+
+Ejemplo:
+
+$> pwd
+/tmp/x
+$> echo hola que tal > /tmp/fich.txt
+$> nrep /tmp/fich.txt 3
+$> ls
+fich.txt.1 fich.txt.2 fich.txt.3
+$> cat fich.txt.1
+hola que tal
+$> cat fich.txt.2
+hola que tal
+hola que tal
+$> cat fich.txt.3
+hola que tal
+hola que tal
+hola que tal
+$> nrep
+usage: nrep FILE num
+
+El programa no puede ejecutar comandos externos (incluyendo una shell). Tampoco se puede usar entrada/salida con buffering (stdio) para leer o escribir, debe usar las llamadas al sistema read(2) y write(2).
+
+Recuerda probarlo con ficheros pequeños y grandes.
